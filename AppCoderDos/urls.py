@@ -1,5 +1,5 @@
 from django.urls import path
-from AppCoderDos.views import curso,lista_cursos,profesores,entregables,inicio,estudiantes,cursos
+from AppCoderDos.views import *
 urlpatterns = [
     path('agrega-curso/<nombre>/<camada>', curso),
     path('lista-cursos/', lista_cursos),
@@ -8,5 +8,7 @@ urlpatterns = [
     path('', inicio,name='inicio'),
     path('estudiantes/', estudiantes,name='estudiantes'),
     path('cursos/', cursos,name='cursos'),#para otro hrf
+    path('curso-formulario/',cursoformulario,name='cursoformulario'),
+    path('busqueda-camada/',busquedaCamada,name='busquedaCamada'),
+    path('buscar/',buscar,name='buscar'),
 ]
- 

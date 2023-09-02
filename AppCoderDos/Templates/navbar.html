@@ -1,0 +1,11 @@
+<!-- Navigation--> <!--columnas arriba de las imagenes-->
+<nav class="navbar navbar-light bg-light static-top"> 
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'inicio' %}">Inicio</a> <!-- aca coloco url donde quiero que me lleve-->
+        <a class="navbar-brand" href="/app-coderdos/profesores">Profesores</a>
+        <a class="navbar-brand" href="{% url 'cursos' %}">Cursos</a><!--otra forma de poner link-->
+        <a class="navbar-brand" href="{% url 'entregables' %}">Entregables</a>
+        <a class="navbar-brand" href="{% url 'estudiantes' %}">Estudiantes</a>
+        <a class="btn btn-primary" href="#signup">Sign Up</a>
+    </div>
+</nav>

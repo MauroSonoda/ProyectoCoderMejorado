@@ -28,7 +28,8 @@ class Profesor(models.Model):
     email=models.EmailField(null=True)
     profesion =models.CharField(max_length=50)
     curso=models.ManyToManyField(Curso)
-   
+    def __str__(self):
+        return f'{self.nombre} {self.Apellido}'
     
     # paso a views para agregar los cros
 class Entregable(models.Model):

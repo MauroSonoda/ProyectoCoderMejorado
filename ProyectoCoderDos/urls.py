@@ -21,4 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('app-coderdos/',include('AppCoderDos.urls')),
 ]
+#para logearnos en el adm createsuperuser
  

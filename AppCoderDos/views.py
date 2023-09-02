@@ -1,7 +1,7 @@
 from django.shortcuts import render
-from .models import Curso
+from .models import Curso,Estudiantes,Profesor
 from django.http import HttpResponse,HttpRequest
-from .forms import CursoFormulario
+from .forms import CursoFormulario,ProfesorFormulario
 
 #cargo ,despues la url
 def curso (req,nombre,camada):
@@ -46,3 +46,32 @@ def buscar(req):
         return render(req,"resultadobusqueda.html",{"curso":curso})
     else:
         return HttpResponse('no escribistre ninguna camada')
+def listaEstudiantes(req): #para leer todos los estudiantes
+    estudiantes=Estudiantes.objects.all() #me traigo todos
+    return render(req,"leerEstudiantes.html",{"estudiantes":estudiantes})
+def listaProfesores(req): #para leer todos los estudiantes
+    profesores=Profesor.objects.all() #me traigo todos
+    return render(req,"leerProfesores.html",{"profesores":profesores})
+def creaProfesor(req):
+    print('method',req.method)
+    print('post',req.POST) #el post es para hacer modificacion
+    if req.method == 'POST':
+        miFormulario=ProfesorFormulario(req.POST)
+        if miFormulario.is_valid():
+            data=miFormulario.cleaned_data
+            profe=Profesor(nombre=data["nombre"],profesion=data["profesion"],email=data["email"])
+            profe.save()
+            return render(req,"inicio.html",{"mensaje":"profesor creado con exito"}) 
+        else:
+              return render(req,"inicio.html",{"mensaje":"formulario invalido"}) 
+    else:      
+        miFormulario=ProfesorFormulario() #creo la instancia vacia
+        return render(req,"profesorformulario.html",{"miFormulario":miFormulario})
+def elminarEstudiante(req, id):
+    if req.method =='POST':
+        alumno=Estudiantes.objects.get(id = id )
+        alumno.delete()
+        
+        alumnos=Estudiantes.objects.all() #me traigo todos
+    return render(req,"leerEstudiantes.html",{"alumno":alumnos})
+        

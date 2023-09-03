@@ -1,0 +1,8 @@
+{% extends 'padre.html' %}
+{% block ContenidoQueCambia %} <!-- para agregar curso y camada-->
+    <form action= "{% url 'EditarProfesor'id %}" method="post"> {% csrf_token %} 
+        {{miFormulario.as_p}} <!--trae la info de cursoformulario-->
+        <button type="submit">actualizar</button><!--se envia a esta url-->
+    </form>
+    </form>
+{% endblock ContenidoQueCambia %}

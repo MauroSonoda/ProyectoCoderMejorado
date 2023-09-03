@@ -13,6 +13,6 @@ urlpatterns = [
     path('buscar/',buscar,name='buscar'),
     path('lista-estudiantes/',listaEstudiantes,name='listaestudiantes'),
     path('lista-profesores/',listaProfesores,name='listaProfesores'),
-    path('crea-profesor/',creaProfesor,name='creaprofesor'),
-    path('elimina-estudiante/<int:id>',elminarEstudiante,name='Eliminaestudiante'),
+    path('crea-profesor/',CreaProfesores,name="creaprofesor"),
+    path('eliminaProfesor/"<int:id>"',eliminarProfesor,name="eliminaprofesor"),   
 ]

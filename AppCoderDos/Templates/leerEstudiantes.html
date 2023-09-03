@@ -3,13 +3,8 @@
 {% block ContenidoQueCambia %} <!-- para agregar curso y camada-->
     <ul>
         
-        {% for alumno in estudiantes%}
-            <li>{{alumno}}</li>
-            <div>
-                <form action="{% url 'Eliminaestudiante' alumno.id %}" method="post">{% csrf_token %}
-                    <button type="submit">eliminar</button>
-                </form>
-            </div>
+        {% for estudiante in estudiantes%}
+            <li>{{estudiante}}{{estudiante.id}}</li>
         {% endfor %}
             
     </ul>

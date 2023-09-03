@@ -52,26 +52,28 @@ def listaEstudiantes(req): #para leer todos los estudiantes
 def listaProfesores(req): #para leer todos los estudiantes
     profesores=Profesor.objects.all() #me traigo todos
     return render(req,"leerProfesores.html",{"profesores":profesores})
-def creaProfesor(req):
-    print('method',req.method)
-    print('post',req.POST) #el post es para hacer modificacion
+def CreaProfesores(req):
+    #verbo get-registro o post -modifica
+   #el post es para hacer modificacion
     if req.method == 'POST':
-        miFormulario=ProfesorFormulario(req.POST)
+        miFormulario=ProfesorFormulario(req.POST) 
         if miFormulario.is_valid():
             data=miFormulario.cleaned_data
-            profe=Profesor(nombre=data["nombre"],profesion=data["profesion"],email=data["email"])
-            profe.save()
+            profesor=Profesor(nombre=data["nombre"],email=data["email"],profesion=data["profesion"])
+            profesor.save()
             return render(req,"inicio.html",{"mensaje":"profesor creado con exito"}) 
         else:
               return render(req,"inicio.html",{"mensaje":"formulario invalido"}) 
     else:      
         miFormulario=ProfesorFormulario() #creo la instancia vacia
         return render(req,"profesorformulario.html",{"miFormulario":miFormulario})
-def elminarEstudiante(req, id):
-    if req.method =='POST':
-        alumno=Estudiantes.objects.get(id = id )
-        alumno.delete()
-        
-        alumnos=Estudiantes.objects.all() #me traigo todos
-    return render(req,"leerEstudiantes.html",{"alumno":alumnos})
-        
+    
+def eliminarProfesor(req,id):
+    if req.method == 'POST':
+       profesor=Profesor.objects.get(id=id)
+       profesor.delete()
+       profesores=Profesor.objects.all() #me traigo todos
+       return render(req,"leerProfesores.html",{"profesores":profesores})
+       
+       
+     

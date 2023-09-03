@@ -4,8 +4,14 @@
     <ul>
         
         {% for profe in profesores %}
-            <li>{{profe}}</li>
+            <li>{{profe}}{{profe.id}}</li>
+            <div>
+                <form action="{% url 'eliminaprofesor' profe.id %}" method="post">{% csrf_token %}
+                    <button type="submit">Eliminar</button>
+                </form>
+            </div>
         {% endfor %}
+        
     </ul>
-    <a href="{% url 'creaprofesor' %}">crear profesor</a>
+   
 {% endblock ContenidoQueCambia %}

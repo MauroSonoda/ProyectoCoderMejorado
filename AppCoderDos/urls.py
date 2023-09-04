@@ -14,5 +14,5 @@ urlpatterns = [
     path('lista-estudiantes/',listaEstudiantes,name='listaestudiantes'),
     path('lista-profesores/',listaProfesores,name='listaProfesores'),
     path('crea-profesor/',CreaProfesores,name="creaprofesor"),
-    path('eliminaProfesor/"<int:id>"',eliminarProfesor,name="eliminaprofesor"),   
+    path('eliminaProfesor/<int:id>',eliminarProfesor,name="eliminaprofesor"),   
 ]
